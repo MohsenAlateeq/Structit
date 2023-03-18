@@ -1,0 +1,41 @@
+{% extends 'SeeditApp/base.html' %}
+{% block title %}
+Login
+{% endblock %}
+{% block content %}
+<br />
+<br />
+<br />
+<br />
+<br />
+<div class="content-container">
+    <div class="content-card">
+      <div class="field">
+        <div class="field-container">
+          <h2 class="content-title">Login</h2>
+        </div>
+      </div>
+      <form action="" method="post">
+        {% csrf_token %}
+      <div class="field">
+        <div class="field-container">
+          <input type="text" name="username" class="content-field" id="" placeholder="Username" />
+          <i class="bi bi-at field-icon"></i>
+        </div>
+      </div>
+      <div class="field">
+        <div class="field-container">
+          <input type="password" name="password" class="content-field" id="" placeholder="Password" />
+          <i class="bi bi-key field-icon"></i>
+        </div>
+      </div>
+      <button type="submit" class="button navbar-buttons button-primary form-button" >Login</button>
+      <div class="field">
+        <div class="field-container">
+          <p class="card-content text-no-padding ">Don’t you have an account? <a href="{% url 'accounts:register_page' %}" class="main-link">Register</a></p>
+        </div>
+      </div>
+    </div>
+    </form>
+  </div>  
+{% endblock %}

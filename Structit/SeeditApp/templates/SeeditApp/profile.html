@@ -1,0 +1,17 @@
+{% extends 'SeeditApp/base.html' %}
+{% block title %}
+{{user.profile.name}} Profile - Seedit
+{% endblock %}
+{% block content %}
+<div class="content-container animate__animated animate__fadeIn">
+  <div class="profile-card">
+          <div class="profile-hero">
+              <div class="profile-head"><img src="{{the_user.profile.image.url}}" class="profile-image" alt=""> <h2 class="content-title">{% if the_user.profile.name %} {{the_user.profile.name}} {% else %} {{the_user.username}} {% endif %} Profile</h2></div>
+              <div class="profile-badge">{{the_user.profile.user_role}}</div>
+          </div>
+          <p class="profile-bio">{{the_user.profile.bio}}</p>
+  </div>
+    <h2 class="profile-title">
+    </h2> 
+</div> 
+{% endblock %}

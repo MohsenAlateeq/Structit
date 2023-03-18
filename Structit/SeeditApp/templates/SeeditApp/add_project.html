@@ -1,0 +1,26 @@
+{% extends 'SeeditApp/base.html' %}
+{% block title %}
+New Project
+{% endblock %}
+{% block content %}
+<div class="content-container animate__animated animate__fadeIn">
+    <div class="content-card">
+      <div class="field">
+        <div class="field-container">
+          <h2 class="content-title">New Project</h2>
+          <p class="card-content text-no-padding">What is your project?</p>
+        </div>
+      </div>
+      <form action="" method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+      <div class="field">
+        <div class="field-container">
+          <input type="text" name="project_name" class="content-field" id="" placeholder="Example: Coffee Shop... " />
+          <i class="bi bi-cast field-icon"></i>
+        </div>
+      </div>
+      <button type="submit" class="button navbar-buttons button-primary form-button" id="project-create">Create Project</button>
+    </div>
+    </form>
+  </div>  
+{% endblock %}

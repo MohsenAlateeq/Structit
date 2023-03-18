@@ -1,0 +1,28 @@
+{% extends 'SeeditApp/base.html' %}
+{% load static %}
+{% block title %}
+Structit
+{% endblock %}
+{% block content %}
+
+<section class="section-two-columns reverse-rows animate__animated animate__fadeIn">
+    <div class="section-element first-section-element" style="margin-bottom: 25px;">
+        <h1 class="group-title" style="font-size: 2.5rem;">Ultimate tool for structuring your project!</h1>
+        <p class="group-description" style="font-size: 1.3rem;">Whether you're working on a software development project, a website redesign, or any other tech-related initiative, our platform has got you covered.</p>
+        <a href="{% url 'SeeditApp:create_project' %}" class="button section-link button-primary">Start Now</a>
+    </div>
+    <div class="section-element second-section-element">
+        <img src="{% static 'SeeditApp/images/hero.jpg' %}" alt="" srcset="" style="max-height: 75vh;">
+    </div>
+</section>
+<section class="section-two-columns improve-section">
+    <div class="section-element first-section-element">
+        <img src="{% static 'SeeditApp/images/improve.png' %}" alt="" srcset="">
+    </div>
+    <div class="section-element second-section-element">
+        <h1 class="group-title">Keep youre project clean!</h1>
+        <p class="group-description">Our service is designed to structure your project from start to finish. Whether you're working on a small project with a few team members or a large-scale project with multiple departments and stakeholders, we have the tools and expertise to help you succeed.</p>
+        <a href="{% url 'SeeditApp:create_project' %}" class="button section-link button-secondary">Get your project structure</a>
+    </div>
+</section>
+{% endblock %}

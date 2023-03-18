@@ -1,0 +1,58 @@
+{% extends 'SeeditApp/base.html' %}
+{% block title %}
+Register
+{% endblock %}
+{% block content %}
+<div class="content-container">
+    <div class="content-card">
+      <div class="field">
+        <div class="field-container">
+          <h2 class="content-title">Register</h2>
+          <p class="card-content text-no-padding">Register a new account</p>
+        </div>
+      </div>
+      <form action="" method="post">
+        {% csrf_token %}
+      <div class="field">
+        <div class="field-container">
+          <p class="field-title">Username</p>
+          <input type="text" name="username" class="content-field" id="" placeholder="Username" />
+          <i class="bi bi-at field-icon"></i>
+        </div>
+      </div>
+      <div class="field">
+        <div class="field-container">
+          <p class="field-title">Email</p>
+          <input type="email" name="email" class="content-field" id="" placeholder="Email" />
+          <i class="bi bi-envelope field-icon"></i>
+        </div>
+      </div>
+      <div class="field">
+        <div class="field-container">
+          <p class="field-title">Role</p>
+          <select class="content-field" name="user_role">
+            <option selected disabled>Select Role</option>
+            {% for role in user_roles %}
+                <option value="{{role.0}}">{{role.0}}</option>
+            {% endfor %}
+          </select> 
+        </div>
+      </div>         
+      <div class="field">
+        <div class="field-container">
+          <p class="field-title">Password</p>
+          <input type="password" name="password" class="content-field" id="" placeholder="Password" />
+          <i class="bi bi-key field-icon"></i>
+        </div>
+      </div>
+      <div class="field">
+        <div class="field-container">
+          <input type="password" name="confirm-password" class="content-field" id="" placeholder="Confirm Password" />
+          <i class="bi bi-key field-icon"></i>
+        </div>
+      </div>
+      <button type="submit" class="button navbar-buttons button-primary form-button" >Register</button>
+    </div>
+    </form>
+  </div>  
+{% endblock %}

@@ -1,0 +1,43 @@
+{% extends 'SeeditApp/base.html' %}
+{% block title %}Contact - Seedit{% endblock %}</title>
+{% block content %}
+<div class="section-two-columns animate__animated animate__fadeIn">
+    <div class="contact-card">
+        <h2 class="content-title">ADDRESS</h2>
+        <p class="contact-title">Address</p>
+        <p class="card-content text-no-padding">Kingdom of Saudi Arabia, Riyadh 12235.</p>
+        <p class="contact-title">Map</p>
+            <div class="map-field" id="map"></div>
+</div>
+    <div class="content-card">
+            <h2 class="content-title">CONTACT US</h2>
+            <p class="card-content text-no-padding">Send your message, We will try to answer your message as soon as possible.</p>
+            <form action="" method="post">
+                {% csrf_token %}
+              <div class="field">
+                <div class="field-container">
+                  <p class="field-title">Name</p>
+                  <input type="text" name="name" class="content-field" id="" placeholder="Full Name" />
+                  <i class="bi bi-person-fill field-icon"></i>
+                </div>
+              </div>   
+              <div class="field">
+                <div class="field-container">
+                  <p class="field-title">Email</p>
+                  <input type="email" name="email" class="content-field" id="" placeholder="Email Address" />
+                  <i class="bi bi-envelope field-icon"></i>
+                </div>
+              </div> 
+                <div class="field">
+                  <div class="field-container">
+                    <p class="field-title">Message</p>
+                    <textarea name="bio" class="contact-field" cols="30" rows="10" placeholder="Type your message"></textarea>
+                  </div>
+                </div>   
+              <button type="submit" class="button navbar-buttons button-primary form-button" >Send Message</button>
+            </div>
+            </form>        
+    </div>
+</div>
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAPoMDkxoYYG0QoLei3zi4clSbU4dFkNNQ&callback=initMap&v=weekly" defer></script>
+{% endblock %}

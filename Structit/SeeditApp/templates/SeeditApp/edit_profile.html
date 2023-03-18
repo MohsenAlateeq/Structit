@@ -1,0 +1,67 @@
+{% extends 'SeeditApp/base.html' %}
+{% block title %}
+{{user.profile.name}} Profile - Seedit
+{% endblock %}
+{% block content %}
+<div class="content-container">
+    <div class="content-card">
+      <div class="field">
+        <div class="field-container">
+          <h2 class="content-title">Edit Profile</h2>
+          <p class="card-content text-no-padding">Edit your profile</p>
+        </div>
+      </div>
+      <form action="" method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+      <div class="field">
+        <div class="field-container">
+          <p class="field-title">Username</p>
+          <input type="text" name="username" class="content-field" id="" value="{{user.username}}" disabled />
+          <i class="bi bi-at field-icon"></i>
+        </div>
+      </div>
+      <div class="field">
+        <div class="field-container">
+          <p class="field-title">Name</p>
+          <input type="text" name="name" class="content-field" id="" placeholder="Full Name" value="{{user.profile.name}}" />
+          <i class="bi bi-person-fill field-icon"></i>
+        </div>
+      </div>   
+      <div class="field">
+        <div class="field-container">
+          <p class="field-title">Bio</p>
+          <textarea name="bio" class="content-field" cols="30" rows="10">{{user.profile.bio}}</textarea>
+        </div>
+      </div>   
+      <div class="field">
+        <div class="field-container">
+          <p class="field-title">Image</p>
+          <span class="image-field-container" ><i class="bi bi-images image-icon"></i><span class="image-field-text">Choose an image</span><input type="file" name="image" class="image-field" id="" accept="image/*" /></span>
+        </div>
+    </div>
+      <div class="field">
+        <div class="field-container">
+          <p class="field-title">Email</p>
+          <input type="email" name="email" class="content-field" id="" placeholder="Email" value="{{user.email}}" />
+          <i class="bi bi-envelope field-icon"></i>
+        </div>
+      </div> 
+      <div class="field">
+        <div class="field-container">
+          <p class="field-title">Password</p>
+          <p>Keep it empty if you don't want</p>
+          <input type="password" name="password" class="content-field" id="" placeholder="Password" />
+          <i class="bi bi-key field-icon"></i>
+        </div>
+      </div>
+      <div class="field">
+        <div class="field-container">
+          <input type="password" name="confirm-password" class="content-field" id="" placeholder="Confirm Password" />
+          <i class="bi bi-key field-icon"></i>
+        </div>
+      </div>
+      <button type="submit" class="button navbar-buttons button-primary form-button" >Update Profile</button>
+    </div>
+    </form>
+  </div>  
+{% endblock %}

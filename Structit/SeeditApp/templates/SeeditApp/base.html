@@ -1,0 +1,133 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}Structit{% endblock %}</title>
+    <link rel="stylesheet" href="{% static 'SeeditApp/icons/bootstrap-icons.css' %}">
+    <link rel="stylesheet" href="{% static 'SeeditApp/css/styles.css' %}">
+    <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"
+  />
+    <script defer>
+        window.addEventListener("load", () => {
+            const loader = document.querySelector(".loader");
+            loader.classList.add("loader-hidden");
+            loader.addEventListener("transitionend", () => {
+               document.body.removeChild("loader"); 
+            })
+        })
+    </script>
+  <style>
+    .content-container {
+        min-height: 70vh;
+    }
+    .loader {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100vw;
+        height: 100vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background-color: whitesmoke;
+        transition: opacity 0.75s, visibility 0.75s;
+
+    }
+    .loader-hidden {
+        opacity: 0;
+        visibility: hidden;
+    }
+    .loader::after {
+        content: "";
+        width: 75px;
+        height: 75px;
+        border: 15px solid #dddddd;
+        border-top-color: orange;
+        border-radius: 50%;
+        animation: loading 0.75s ease infinite;
+    }
+    @keyframes loading {
+      from {
+        transform: rotate(0turn);
+      }
+      to {
+        transform: rotate(1turn);
+      }
+    }
+  </style>
+</head>
+<body>
+    <nav class="navbar">
+        <div class="brand">
+            <div class="flex">
+                <span class="brand-name">Struct</span>
+                <span class="brand-name">it</span>
+            </div>
+            <div class="menu">
+                <i class="bi bi-list"></i>
+            </div>
+        </div>
+        <ul class="navbar-links">
+            <li class="navbar-link"><a href="{% url 'SeeditApp:home_page' %}">Home</a></li>
+            <li class="navbar-link"><a href="{% url 'SeeditApp:projects_page' %}">Projects</a></li>
+            <li class="navbar-link"><a href="{% url 'SeeditApp:about_page' %}">About</a></li>
+            <li class="navbar-link"><a href="{% url 'SeeditApp:contact_page' %}">Contact</a></li>
+        </ul>
+        <div class="control" >
+            {% if user.is_authenticated %}
+            <div class="control" >
+                <div class="dropdown">
+                    <div onclick="myFunction()" class="dropbtn">
+                        <img class="drop-image" src="{{request.user.profile.image.url}}" alt="" >
+                        {{request.user.username}}
+                        <i class="bi bi-caret-down drop-toggler"></i>
+                    </div>
+                    <div id="myDropdown" class="dropdown-content">
+                        {% if user.profile.user_role == 'Entreprenuer' %}
+                        <a href="{% url 'SeeditApp:create_project' %}"><span><i class="bi bi-plus-circle"></i></span> <span class="drop-text">New Project</span></a>
+                        {% endif %}
+                      <a href="{% url 'SeeditApp:profile_page' user.username %}"><span><i class="bi bi-person-fill"></i></span> <span class="drop-text">Profile</span></a>
+                      <a href="{% url 'SeeditApp:edit_profile_page' user.username %}"><span><i class="bi bi-gear"></i></span> <span class="drop-text">Settings</span></a>
+                      <a href="{% url 'accounts:logout_page' %}"><span><i class="bi bi-box-arrow-right"></i></span> <span class="drop-text">Logout</span></a>
+                    </div>
+                  </div>              
+            </div>
+            {% else %}
+            <a href="{% url 'accounts:login_page' %}" class="button navbar-buttons button-primary">Login</a>
+            <a href="{% url 'accounts:register_page' %}" class="button navbar-buttons button-secondary" id="register-button">Register</a>
+            {% endif %}
+        </div>
+    </nav>
+    {% block content %}
+    {% endblock %}
+    <footer class="section-three-columns footer-content">
+        <div class="footer-brand">
+            <div class="flex">
+                <span class="brand-name">Struct</span>
+                <span class="brand-name">it</span>
+            </div>
+            <span>© 2022</span>
+        </div>
+        <div class="footer-links">
+            <ul class="footer-links">
+                <li class="footer-link"><a href="{% url 'SeeditApp:home_page' %}">Home</a></li>
+                <li class="footer-link"><a href="{% url 'SeeditApp:about_page' %}">About</a></li>
+                <li class="footer-link"><a href="{% url 'SeeditApp:contact_page' %}">Contact</a></li>
+            </ul>
+        </div>
+        <div class="footer-address">
+            <h3 class="address-title">Address</h3>
+            <p class="address-content">
+                Kingdom of Saudi Arabia, Riyadh 12235.
+            </p>
+        </div>
+    </footer>
+    <script src="{% static 'SeeditApp/js/scripts.js' %}"></script>
+    <div class="loader"></div>
+</body>
+</html>
